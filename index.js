@@ -19,6 +19,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/admins', adminRoutes);
 app.use('/api/posts', postRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Get me that job");
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
