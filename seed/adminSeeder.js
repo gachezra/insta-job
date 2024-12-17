@@ -6,12 +6,12 @@ require('dotenv').config();
 const seedAdmin = async () => {
   await mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@insta-project.oodqm.mongodb.net/?retryWrites=true&w=majority&appName=insta-project`);
 
-  const hashedPassword = await bcrypt.hash('Admin123!', 10);
+  const hashedPassword = await bcrypt.hash(`${process.env.PASS}`, 10);
   const admin = new User({
-    firstName: 'Admin',
-    lastName: 'User',
-    email: 'admin@mail.com',
-    country: 'Kenya',
+    firstName: `${process.env.FN}`,
+    lastName: `${process.env.LN}`,
+    email: `${process.env.EMAIL}`,
+    country: `${process.env.COUNTRY}`,
     password: hashedPassword,
     isEmailVerified: true,
     role: 'admin'
